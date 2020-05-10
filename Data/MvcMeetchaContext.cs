@@ -11,7 +11,8 @@ namespace MvcMeetcha.Data
         }
 
         public DbSet<Group> Group { get; set; }
-        public DbSet <Meetup> Meetup { get; set; }
+        public DbSet<Meetup> Meetup { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
