@@ -20526,28 +20526,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/User/Details.cshtml",
-      "TargetPath": "Views\\User\\Details.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/Group/Index.cshtml",
       "TargetPath": "Views\\Group\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/User/Edit.cshtml",
-      "TargetPath": "Views\\User\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/User/Create.cshtml",
-      "TargetPath": "Views\\User\\Create.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/User/Delete.cshtml",
-      "TargetPath": "Views\\User\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -20563,11 +20543,6 @@
     {
       "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/Group/Delete.cshtml",
       "TargetPath": "Views\\Group\\Delete.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/Users/mushmush/Desktop/Program/MvcMeetcha/Views/User/Index.cshtml",
-      "TargetPath": "Views\\User\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

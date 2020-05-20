@@ -11,74 +11,74 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.MeetupName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.MeetupName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.MeetupDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.MeetupDescription)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
+            @Html.DisplayNameFor(model => model.MeetupDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.MeetupDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.MeetupStartTime)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartTime)
+            @Html.DisplayFor(model => model.MeetupStartTime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndTime)
+            @Html.DisplayNameFor(model => model.MeetupEndTime)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndTime)
+            @Html.DisplayFor(model => model.MeetupEndTime)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Venue)
+            @Html.DisplayNameFor(model => model.MeetupVenue)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Venue)
+            @Html.DisplayFor(model => model.MeetupVenue)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Type)
+            @Html.DisplayNameFor(model => model.MeetupType)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
+            @Html.DisplayFor(model => model.MeetupType.MeetupTypeName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.MeetupFee)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.MeetupFee)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Poster)
+            @Html.DisplayNameFor(model => model.MeetupImageName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Poster)
+            @Html.DisplayFor(model => model.MeetupImageName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VolunteersNum)
+            Uploaded Image
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VolunteersNum)
+            <img src="@("~/image/"+ Model.MeetupImageName)" asp-append-version="true"/>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AttendeesNum)
+            @Html.DisplayNameFor(model => model.Group)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AttendeesNum)
+            @Html.DisplayFor(model => model.Group.GroupDescription)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.MeetupId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

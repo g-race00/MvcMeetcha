@@ -12,61 +12,69 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="MeetupId" />
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="MeetupName" class="control-label"></label>
+                <input asp-for="MeetupName" class="form-control" />
+                <span asp-validation-for="MeetupName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="MeetupDescription" class="control-label"></label>
+                <input asp-for="MeetupDescription" class="form-control" />
+                <span asp-validation-for="MeetupDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+                <label asp-for="MeetupDate" class="control-label"></label>
+                <input asp-for="MeetupDate" class="form-control" />
+                <span asp-validation-for="MeetupDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartTime" class="control-label"></label>
-                <input asp-for="StartTime" class="form-control" />
-                <span asp-validation-for="StartTime" class="text-danger"></span>
+                <label asp-for="MeetupStartTime" class="control-label"></label>
+                <input asp-for="MeetupStartTime" class="form-control" />
+                <span asp-validation-for="MeetupStartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EndTime" class="control-label"></label>
-                <input asp-for="EndTime" class="form-control" />
-                <span asp-validation-for="EndTime" class="text-danger"></span>
+                <label asp-for="MeetupEndTime" class="control-label"></label>
+                <input asp-for="MeetupEndTime" class="form-control" />
+                <span asp-validation-for="MeetupEndTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Venue" class="control-label"></label>
-                <input asp-for="Venue" class="form-control" />
-                <span asp-validation-for="Venue" class="text-danger"></span>
+                <label asp-for="MeetupTypeId" class="control-label"></label>
+                <select asp-for="MeetupTypeId" class="form-control" asp-items="ViewBag.MeetupTypeId">
+                    <option value="">-- Select Type --</option>
+                </select>
+                <span asp-validation-for="MeetupTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
-                <span asp-validation-for="Type" class="text-danger"></span>
+                <label asp-for="MeetupVenue" class="control-label"></label>
+                <input asp-for="MeetupVenue" class="form-control" />
+                <span asp-validation-for="MeetupVenue" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label asp-for="MeetupFee" class="control-label"></label>
+                <input asp-for="MeetupFee" class="form-control" />
+                <span asp-validation-for="MeetupFee" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Poster" class="control-label"></label>
-                <input asp-for="Poster" class="form-control" />
-                <span asp-validation-for="Poster" class="text-danger"></span>
+                <label asp-for="MeetupImageFile" class="control-label"></label>
+                <input asp-for="MeetupImageFile" type="file" accept="image/*" onchange="loadFile(event)" />
+                <span asp-validation-for="MeetupImageFile" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="VolunteersNum" class="control-label"></label>
-                <input asp-for="VolunteersNum" class="form-control" />
-                <span asp-validation-for="VolunteersNum" class="text-danger"></span>
+            <div>
+                <img id="output" width="200" />
             </div>
+            <script>
+            var loadFile = function(event) {
+                var image = document.getElementById('output');
+                image.src = URL.createObjectURL(event.target.files[0]);
+            };
+            </script>
             <div class="form-group">
-                <label asp-for="AttendeesNum" class="control-label"></label>
-                <input asp-for="AttendeesNum" class="form-control" />
-                <span asp-validation-for="AttendeesNum" class="text-danger"></span>
+                <label asp-for="GroupId" class="control-label"></label>
+                <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupId">
+                    <option value="">-- Select Type --</option>
+                </select>
+                <span asp-validation-for="GroupId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

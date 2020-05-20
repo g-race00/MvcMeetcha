@@ -13,37 +13,34 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.MeetupName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayNameFor(model => model.MeetupDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.MeetupDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartTime)
+                @Html.DisplayNameFor(model => model.MeetupStartTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndTime)
+                @Html.DisplayNameFor(model => model.MeetupEndTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venue)
+                @Html.DisplayNameFor(model => model.MeetupVenue)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                @Html.DisplayNameFor(model => model.MeetupType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.MeetupFee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Poster)
+                @Html.DisplayNameFor(model => model.MeetupImageName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.VolunteersNum)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AttendeesNum)
+                @Html.DisplayNameFor(model => model.Group)
             </th>
             <th></th>
         </tr>
@@ -52,42 +49,39 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.DisplayFor(modelItem => item.MeetupName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @Html.DisplayFor(modelItem => item.MeetupDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Date)
+                @Html.DisplayFor(modelItem => item.MeetupDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
+                @Html.DisplayFor(modelItem => item.MeetupStartTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndTime)
+                @Html.DisplayFor(modelItem => item.MeetupEndTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venue)
+                @Html.DisplayFor(modelItem => item.MeetupVenue)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Type)
+                @Html.DisplayFor(modelItem => item.MeetupType.MeetupTypeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.MeetupFee)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Poster)
+                @Html.DisplayFor(modelItem => item.MeetupImageName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.VolunteersNum)
+                @Html.DisplayFor(modelItem => item.Group.GroupDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AttendeesNum)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MeetupId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.MeetupId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.MeetupId">Delete</a>
             </td>
         </tr>
 }

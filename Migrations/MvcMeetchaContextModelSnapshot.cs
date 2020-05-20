@@ -21,104 +21,272 @@ namespace MvcMeetcha.Migrations
 
             modelBuilder.Entity("MvcMeetcha.Models.Group", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("GroupDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("GroupImageName")
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Poster")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("GroupTypeId")
+                        .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("GroupId");
+
+                    b.HasIndex("GroupTypeId");
 
                     b.ToTable("Group");
                 });
 
-            modelBuilder.Entity("MvcMeetcha.Models.Meetup", b =>
+            modelBuilder.Entity("MvcMeetcha.Models.GroupType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GroupTypeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AttendeesNum")
+                    b.Property<string>("GroupTypeName")
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("GroupTypeId");
+
+                    b.ToTable("GroupType");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupTypeId = 1,
+                            GroupTypeName = "Arts"
+                        },
+                        new
+                        {
+                            GroupTypeId = 2,
+                            GroupTypeName = "Beliefs"
+                        },
+                        new
+                        {
+                            GroupTypeId = 3,
+                            GroupTypeName = "Book Clubs"
+                        },
+                        new
+                        {
+                            GroupTypeId = 4,
+                            GroupTypeName = "Career & Business"
+                        },
+                        new
+                        {
+                            GroupTypeId = 5,
+                            GroupTypeName = "Dance"
+                        },
+                        new
+                        {
+                            GroupTypeId = 6,
+                            GroupTypeName = "Family"
+                        },
+                        new
+                        {
+                            GroupTypeId = 7,
+                            GroupTypeName = "Fashion & Beauty"
+                        },
+                        new
+                        {
+                            GroupTypeId = 8,
+                            GroupTypeName = "Film"
+                        },
+                        new
+                        {
+                            GroupTypeId = 9,
+                            GroupTypeName = "Food & Drinks"
+                        },
+                        new
+                        {
+                            GroupTypeId = 10,
+                            GroupTypeName = "Health & Wellness"
+                        },
+                        new
+                        {
+                            GroupTypeId = 11,
+                            GroupTypeName = "Hobbies & Crafts"
+                        },
+                        new
+                        {
+                            GroupTypeId = 12,
+                            GroupTypeName = "Language & Culture"
+                        },
+                        new
+                        {
+                            GroupTypeId = 13,
+                            GroupTypeName = "Learning"
+                        },
+                        new
+                        {
+                            GroupTypeId = 14,
+                            GroupTypeName = "Movements"
+                        },
+                        new
+                        {
+                            GroupTypeId = 15,
+                            GroupTypeName = "Music"
+                        },
+                        new
+                        {
+                            GroupTypeId = 16,
+                            GroupTypeName = "Outdoors & Adventure"
+                        },
+                        new
+                        {
+                            GroupTypeId = 17,
+                            GroupTypeName = "Pets"
+                        },
+                        new
+                        {
+                            GroupTypeId = 18,
+                            GroupTypeName = "Photography"
+                        },
+                        new
+                        {
+                            GroupTypeId = 19,
+                            GroupTypeName = "Sci-Fi & Games"
+                        },
+                        new
+                        {
+                            GroupTypeId = 20,
+                            GroupTypeName = "Social"
+                        },
+                        new
+                        {
+                            GroupTypeId = 21,
+                            GroupTypeName = "Sports & Fitness"
+                        },
+                        new
+                        {
+                            GroupTypeId = 22,
+                            GroupTypeName = "Writing"
+                        });
+                });
+
+            modelBuilder.Entity("MvcMeetcha.Models.Meetup", b =>
+                {
+                    b.Property<int>("MeetupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime>("MeetupDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("MeetupDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)");
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateTime>("MeetupEndTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Poster")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Price")
+                    b.Property<decimal>("MeetupFee")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("StartTime")
+                    b.Property<string>("MeetupImageName")
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("MeetupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("MeetupStartTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Venue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VolunteersNum")
+                    b.Property<int>("MeetupTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("MeetupVenue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("MeetupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("MeetupTypeId");
 
                     b.ToTable("Meetup");
                 });
 
-            modelBuilder.Entity("MvcMeetcha.Models.User", b =>
+            modelBuilder.Entity("MvcMeetcha.Models.MeetupType", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("MeetupTypeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("MeetupTypeName")
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("MeetupTypeId");
 
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                    b.ToTable("MeetupType");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasData(
+                        new
+                        {
+                            MeetupTypeId = 1,
+                            MeetupTypeName = "Event"
+                        },
+                        new
+                        {
+                            MeetupTypeId = 2,
+                            MeetupTypeName = "Workshop"
+                        },
+                        new
+                        {
+                            MeetupTypeId = 3,
+                            MeetupTypeName = "Seminar"
+                        },
+                        new
+                        {
+                            MeetupTypeId = 4,
+                            MeetupTypeName = "Conference"
+                        },
+                        new
+                        {
+                            MeetupTypeId = 5,
+                            MeetupTypeName = "Programme"
+                        });
+                });
 
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+            modelBuilder.Entity("MvcMeetcha.Models.Group", b =>
+                {
+                    b.HasOne("MvcMeetcha.Models.GroupType", "GroupType")
+                        .WithMany()
+                        .HasForeignKey("GroupTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
 
-                    b.Property<string>("TeleNum")
-                        .HasColumnType("nvarchar(max)");
+            modelBuilder.Entity("MvcMeetcha.Models.Meetup", b =>
+                {
+                    b.HasOne("MvcMeetcha.Models.Group", "Group")
+                        .WithMany("GroupMeetups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
+                    b.HasOne("MvcMeetcha.Models.MeetupType", "MeetupType")
+                        .WithMany()
+                        .HasForeignKey("MeetupTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
