@@ -1,0 +1,9 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<h1>@ViewData["Title"]</h1>
+<p>Hello @Model.Username. Welcome to Meetcha Back Office!</p>

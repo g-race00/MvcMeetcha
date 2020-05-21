@@ -1,0 +1,10 @@
+@model CustomPageData
+<nav>
+  <ul class="pagination">
+    @{ Model.UrlParams["PageNumber"] = (Model.PageIndex - 1).ToString(); }
+    <li class="page-item @(Model.HasPreviousPage ? "" : "disabled")"><a class="page-link" asp-all-route-data="Model.UrlParams">Previous</a></li>
+    <li class="page-item disabled"><a class="page-link" href="#">@Model.PageIndex / @Model.TotalPages</a></li>
+    @{ Model.UrlParams["PageNumber"] = (Model.PageIndex + 1).ToString(); }
+    <li class="page-item @(Model.HasNextPage ? "" : "disabled")"><a class="page-link" asp-all-route-data="Model.UrlParams">Next</a></li>
+  </ul>
+</nav>

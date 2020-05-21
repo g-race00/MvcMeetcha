@@ -1,0 +1,47 @@
+@page
+@model IndexModel
+@{
+  ViewData["Title"] = "Groups";
+}
+
+<partial name="_StatusMessage" model="@TempData["StatusMessage"]" />
+<p><a asp-page="Create">Create Group</a></p>
+<form class="mb-3">
+  <div class="form-row">
+    <div class="col-auto">
+      <input class="form-control" type="text" placeholder="Name" asp-for="SearchString">
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th> @Html.DisplayNameFor(model => model.Groups[0].Id) </th>
+      <th> @Html.DisplayNameFor(model => model.Groups[0].Name) </th>
+      <th> @Html.DisplayNameFor(model => model.Groups[0].GroupTypeId) </th>
+      <th> Group Type </th>
+      <th> Member Count </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var item in Model.Groups) {
+    <tr>
+      <td> @Html.DisplayFor(modelItem => item.Id) </td>
+      <td> @Html.DisplayFor(modelItem => item.Name) </td>
+      <td> @Html.DisplayFor(modelItem => item.GroupTypeId) </td>
+      <td> @Html.DisplayFor(modelItem => item.GroupTypeName) </td>
+      <td> @Html.DisplayFor(modelItem => item.MembersCount) </td>
+      <td>
+        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+      </td>
+    </tr>
+}
+  </tbody>
+</table>
+<partial name="_PageSelector" model="Model.Groups.GetPageData(Model)" />

@@ -1,0 +1,90 @@
+@{
+  Layout = "../Shared/_Layout";
+}
+
+<div class="d-flex align-items-stretch min-vh-100">
+  <div class="sidebar">
+    <div class="sidebar-info">
+      <div class="h5">@Model.ThisUser.UserName</div>
+      <div class="text-truncate" style="color: #ddd;">@Model.ThisUser.Email</div>
+    </div>
+    <div class="sidebar-item"><a class="sidebar-link" href="#">Profile</a></div>
+    <div class="sidebar-item">
+      <form asp-page="/BackOffice/Logout" asp-route-returnUrl="@Url.Page("/BackOffice/Login")">
+        <button type="submit" class="sidebar-link">Logout</button>
+      </form>
+    </div>
+    <div class="sidebar-separator"></div>
+    <div class="sidebar-item @(CustomHelper.UrlPart(Model, 2) == "" ? "active" : "")"><a class="sidebar-link" asp-page="/BackOffice/Index">Dashboard</a></div>
+    <div class="sidebar-item @(CustomHelper.UrlPart(Model, 2) == "Admins" ? "active" : "")"><a class="sidebar-link" asp-page="/BackOffice/Admins/Index">Admins</a></div>
+    <div class="sidebar-item @(CustomHelper.UrlPart(Model, 2) == "Members" ? "active" : "")"><a class="sidebar-link" asp-page="/BackOffice/Members/Index">Members</a></div>
+    <div class="sidebar-item @(CustomHelper.UrlPart(Model, 2) == "Groups" ? "active" : "")"><a class="sidebar-link" asp-page="/BackOffice/Groups/Index">Groups</a></div>
+    <div class="sidebar-item @(CustomHelper.UrlPart(Model, 2) == "Meetups" ? "active" : "")"><a class="sidebar-link" href="#">Meetups</a></div>
+  </div>
+  <div class="main-content flex-fill">
+    <h1 class="main-content-title">@ViewData["Title"]</h1>
+    <hr>
+    @RenderBody()
+  </div>
+</div>
+
+@section Styles {
+<style>
+.sidebar {
+  width: 200px;
+}
+.sidebar-info {
+  padding: 32px 16px;
+  margin-bottom: 10px;
+  background-color: #424874;
+  color: white;
+}
+.sidebar-separator {
+  padding-top: 10px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+.sidebar-item {
+  padding: 4px 8px;
+}
+.sidebar-item.active {
+}
+.sidebar-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  text-align: left;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 6px 12px;
+  color: #333;
+  background-color: transparent;
+}
+.sidebar-link:hover {
+  border-color: #007bff;
+  color: #007bff;
+  text-decoration: none;
+}
+.sidebar-item.active .sidebar-link {
+  background-color: #007bff;
+  color: white;
+}
+.main-content {
+  background-color: #eee;
+  padding: 16px 32px;
+}
+.main-content-title {
+  font-weight: bold;
+  font-style: italic;
+  font-family: serif;
+  font-size: 36px;
+}
+body {
+  margin-bottom: 0;
+}
+</style>
+@RenderSection("Styles", required: false)
+}
+@section Scripts {
+@RenderSection("Scripts", required: false)
+}

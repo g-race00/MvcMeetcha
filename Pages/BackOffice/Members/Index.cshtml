@@ -1,0 +1,43 @@
+@page
+@model IndexModel
+@{
+  ViewData["Title"] = "Members";
+}
+
+<partial name="_StatusMessage" model="@TempData["StatusMessage"]" />
+<p><a asp-page="Create">Create Member</a></p>
+<form class="mb-3">
+  <div class="form-row">
+    <div class="col-auto">
+      <input class="form-control" type="text" placeholder="Username" asp-for="SearchString">
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-outline-secondary" type="submit">Search</button>
+    </div>
+  </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th> @Html.DisplayNameFor(model => model.Members[0].Id) </th>
+      <th> @Html.DisplayNameFor(model => model.Members[0].UserName) </th>
+      <th> @Html.DisplayNameFor(model => model.Members[0].Email) </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var item in Model.Members) {
+    <tr>
+      <td> @Html.DisplayFor(modelItem => item.Id) </td>
+      <td> @Html.DisplayFor(modelItem => item.UserName) </td>
+      <td> @Html.DisplayFor(modelItem => item.Email) </td>
+      <td>
+        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+        <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+      </td>
+    </tr>
+}
+  </tbody>
+</table>
+<partial name="_PageSelector" model="Model.Members.GetPageData(Model)" />

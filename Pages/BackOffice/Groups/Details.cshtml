@@ -1,0 +1,57 @@
+@page
+@model DetailsModel
+@{
+  ViewData["Title"] = "View Group";
+}
+
+<partial name="_StatusMessage" model="@TempData["StatusMessage"]" />
+<div>
+  <dl class="row">
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Group.Id)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Group.Id)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Group.Name)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Group.Name)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Group.GroupTypeId)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Group.GroupTypeId)
+    </dd>
+    <dt class="col-sm-2">
+      Group Type
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Group.GroupType.Name)
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Group.Image)
+    </dt>
+    <dd class="col-sm-10">
+      <img src="/data/images/@Model.Group.Image" style="max-width: 300px; width: 100%;">
+    </dd>
+    <dt class="col-sm-2">
+      @Html.DisplayNameFor(model => model.Group.Description)
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.Group.Description)
+    </dd>
+    <dt class="col-sm-2">
+      Group Member Count
+    </dt>
+    <dd class="col-sm-10">
+      @Html.DisplayFor(model => model.GroupMemberCount)
+    </dd>
+  </dl>
+</div>
+<div>
+  <a asp-page="./Edit" asp-route-id="@Model.Group.Id">Edit</a> |
+  <a asp-page="./Index">Back to List</a>
+</div>

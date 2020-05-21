@@ -1,0 +1,34 @@
+@page
+@model CreateModel
+@{
+  ViewData["Title"] = "Create Member";
+}
+
+<form method="post" style="max-width: 400px;">
+  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+  <div class="form-group">
+    <label asp-for="Input.Username" class="control-label"></label>
+    <input asp-for="Input.Username" class="form-control" />
+    <span asp-validation-for="Input.Username" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Input.Email" class="control-label"></label>
+    <input asp-for="Input.Email" class="form-control" />
+    <span asp-validation-for="Input.Email" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <label asp-for="Input.Password" class="control-label"></label>
+    <input asp-for="Input.Password" class="form-control" />
+    <span asp-validation-for="Input.Password" class="text-danger"></span>
+  </div>
+  <div class="form-group">
+    <input type="submit" value="Create" class="btn btn-primary" />
+  </div>
+</form>
+<div>
+  <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

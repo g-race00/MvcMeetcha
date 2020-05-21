@@ -1,0 +1,44 @@
+@page
+@model SignUpModel
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Sign Up";
+}
+
+<div class="mt-5">
+  <div class="card mx-auto" style="max-width: 400px;">
+    <div class="card-body">
+      <h2 class="h5">Sign Up</h2>
+      <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+          <label asp-for="Input.Username"></label>
+          <input asp-for="Input.Username" class="form-control" />
+          <span asp-validation-for="Input.Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Input.Email"></label>
+          <input asp-for="Input.Email" class="form-control" />
+          <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Input.Password"></label>
+          <input asp-for="Input.Password" class="form-control" />
+          <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <label asp-for="Input.ConfirmPassword"></label>
+          <input asp-for="Input.ConfirmPassword" class="form-control" />
+          <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
