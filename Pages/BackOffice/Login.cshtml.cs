@@ -39,6 +39,9 @@ namespace MvcMeetcha.Pages.BackOffice
         [TempData]
         public string? ErrorMessage { get; set; }
 
+        [TempData]
+        public string? StatusMessage { get; set; }
+
         public class InputModel
         {
             [Required]
@@ -65,40 +68,81 @@ namespace MvcMeetcha.Pages.BackOffice
         {
             returnUrl = returnUrl ?? Url.Content("~/BackOffice");
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = await _dbContext.Users
-                    .Include(a => a.Admin)
-                    .Include(a => a.Member)
-                    .Where(a => a.UserName == Input.Username)
-                    .FirstOrDefaultAsync();
+                return Page();
+            }
 
-                if (user.Admin == null)
-                {
-                    ModelState.AddModelError(string.Empty, "Please login using admin account.");
-                    return Page();
-                }
+            var user = await _dbContext.Users
+                .Include(a => a.Admin)
+                .Include(a => a.Member)
+                .Where(a => a.UserName == Input.Username)
+                .FirstOrDefaultAsync();
 
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, false, lockoutOnFailure: false);
-
-                if (result.Succeeded)
-                {
-                    return LocalRedirect(returnUrl);
-                }
-
-                if (result.IsLockedOut)
-                {
-                    return RedirectToPage("./Lockout");
-                }
-
+            if (user == null)
+            {
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 return Page();
             }
 
-            // If we got this far, something failed, redisplay form
-            return Page();
+            if (user.Admin == null)
+            {
+                ModelState.AddModelError(string.Empty, "Please login using admin account.");
+                return Page();
+            }
+
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+            var result = await _signInManager.PasswordSignInAsync(Input.Username, Input.Password, false, lockoutOnFailure: false);
+
+            if (result.IsLockedOut)
+            {
+                return RedirectToPage("./Lockout");
+            }
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return Page();
+            }
+
+            return LocalRedirect(returnUrl);
+        }
+
+        public async Task<IActionResult> OnPostInitAdminAsync()
+        {
+            var user = new Account
+            {
+                UserName = "admin",
+                Email = "admin@example.com"
+            };
+
+            var result = await _userManager.CreateAsync(user, "Admin123!");
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                
+                return Page();
+            }
+
+            _dbContext.Admins.Add(new Admin { AspNetUserId = user.Id });
+            await _dbContext.SaveChangesAsync();
+
+            var signInResult = await _signInManager.PasswordSignInAsync("admin", "Admin123!", false, lockoutOnFailure: false);
+
+            if (!signInResult.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return Page();
+            }
+
+            StatusMessage = "Admin created. Username: \"admin\", Password: \"Admin123!\"";
+
+            return RedirectToPage("./Index");
         }
     }
 }
