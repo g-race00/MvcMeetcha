@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 
-namespace Meetcha.Pages
+namespace MvcMeetcha.Pages
 {
     public class CustomPaginatedList<T>: List<T>
     {

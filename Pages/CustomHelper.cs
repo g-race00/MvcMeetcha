@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Meetcha.Pages
+namespace MvcMeetcha.Pages
 {
     public static class CustomHelper
     {

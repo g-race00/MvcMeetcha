@@ -5,8 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Meetcha.Data;
-using Meetcha.Pages;
+using MvcMeetcha.Data;
+using MvcMeetcha.Pages;
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Meetcha.Pages.BackOffice.Groups
+namespace MvcMeetcha.Pages.BackOffice.Groups
 {
     public class DeleteModel: CustomPageModel
     {

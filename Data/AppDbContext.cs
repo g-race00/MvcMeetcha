@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Meetcha.Data
+namespace MvcMeetcha.Data
 {
     public class AppDbContext: IdentityDbContext<Account>
     {

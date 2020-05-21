@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Meetcha.Pages
+namespace MvcMeetcha.Pages
 {
     [AllowAnonymous]
     public class LockoutModel: PageModel

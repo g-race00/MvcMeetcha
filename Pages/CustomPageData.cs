@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Meetcha.Pages
+namespace MvcMeetcha.Pages
 {
     public class CustomPageData
     {

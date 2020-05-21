@@ -4,14 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Meetcha.Data;
-using Meetcha.Pages;
+using MvcMeetcha.Data;
+using MvcMeetcha.Pages;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Meetcha.Pages.BackOffice
+namespace MvcMeetcha.Pages.BackOffice
 {
     public class IndexModel: CustomPageModel
     {
